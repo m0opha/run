@@ -1,1 +1,1 @@
-run is a tool that detect 'run' as a name in a filename and his extension is configures in .config/run/config.json run or compile the script. :D 
+run is a tool that detect the keyword 'run' as a filename if his extension is configures in ".config/run/config.json" the script run or compile the file. :D 
