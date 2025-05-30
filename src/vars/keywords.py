@@ -1,0 +1,8 @@
+RUN = "run"
+PWD = "PWD"
+HOME = "HOME"
+CONFIG = ".config"
+PATH = "PATH"
+TILDE = "~"
+DOT = "."
+COLON = ":"
