@@ -1,10 +1,12 @@
-from colorama import Fore, Style
+from colorama import Fore, Style, init
 
-def pSuccess(text:str):
-    print(f"{Fore.GREEN}{Style.BRIGHT}{text}{Style.RESET_ALL}")
+init(autoreset=True)
 
-def pError(text:str):
-    print(f"{Fore.RED}{Style.BRIGHT}{text}{Style.RESET_ALL}")
+def pSuccess(text: str):
+    print(f"{Fore.GREEN}{Style.BRIGHT}{text}")
 
-def pWarning(text:str):
-    print(f"{Fore.YELLOW}{Style.BRIGHT}{text}{Style.RESET_ALL}")
+def pError(text: str):
+    print(f"{Fore.RED}{Style.BRIGHT}{text}")
+
+def pWarning(text: str):
+    print(f"{Fore.YELLOW}{Style.BRIGHT}{text}")
