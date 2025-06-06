@@ -21,6 +21,6 @@ def executeByExtension(path:str, interpreters=None, arg=None):
     
     interpreter_path = getBinaryPath(interpreters[extension[1:]])
 
-    pWarning(f"[*] running with {os.path.basename(interpreter_path)}")
+    pWarning(f"[*] running {os.path.basename(path)} with {os.path.basename(interpreter_path)}")
     subprocess.run([interpreter_path , path])
     pSuccess(f"[+]{os.path.basename(interpreter_path)} execution done.")

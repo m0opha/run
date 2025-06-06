@@ -1,25 +1,26 @@
 import os
 import sys
-import subprocess
 
-from .modules.config_directory_fun import verifyConfigDir
-from .modules.search_target_file import searchTargetFile
-from .modules.print_colors import pError, pWarning
-from .modules.generic_fun import resolvePath, getConfig
-from .modules.execute_by_extension import executeByExtension
-
+from .modules import (verifyConfigDir, 
+                     searchTargetFile, 
+                     pError,
+                     pWarning, 
+                     resolvePath, 
+                     getConfig, 
+                     executeByExtension, 
+                     ParserArguments, 
+                     printUsage)
 
 from .vars.config import _TARGET_FILENAME
 from .vars.paths import _CURRENT_DIR, _CONFIG_FILE_PATH
 
-#verify the configuration and file struct
 verifyConfigDir()
-_CONFIG = getConfig(_CONFIG_FILE_PATH)
 
+_CONFIG = getConfig(_CONFIG_FILE_PATH)
 if _CONFIG == None:
     sys.exit(1)
 
-def _multiple_target_files(targets_filename):
+def multiple_target_files(targets_filename):
     length_files_found = len(targets_filename)
 
     pWarning(f"Which {_TARGET_FILENAME} file do you want execute.")
@@ -50,17 +51,39 @@ def _multiple_target_files(targets_filename):
     sys.exit(0)
     
 def run():
-    targets_filename = searchTargetFile(_TARGET_FILENAME , resolvePath(_CURRENT_DIR))
+    targets_filename = searchTargetFile(_TARGET_FILENAME, resolvePath(_CURRENT_DIR))
+    
+    if not targets_filename:
+        pError(f"[-] Target file {_TARGET_FILENAME} Not found.")        
+        return
 
     if type(targets_filename) == list :
-        _multiple_target_files(targets_filename)
+        multiple_target_files(targets_filename)
     
     #if only one target file execute it.
     executeByExtension(targets_filename, _CONFIG)
-
+    
 def main():
+    parser_arguments = ParserArguments()    
+    parser_arguments.add("--help", "-h")
+    parser_arguments.add("--target" , "-T", length=2)
+    
+    arg = parser_arguments.get()
+  
+    target = arg.target
+    help = arg.help
+
+    if help:
+        printUsage()
+        return
+        
+    if target:
+        global _TARGET_FILENAME 
+        _TARGET_FILENAME = target
+    
     try:
         run()
+    
     except KeyboardInterrupt:
         pass
 

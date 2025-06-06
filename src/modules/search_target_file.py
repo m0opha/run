@@ -21,4 +21,4 @@ def searchTargetFile(target_filename:str , path:str):
     if len(file_found) == 1:
         return file_found[0]
     
-    return file_found
+    return file_found if file_found != [] else None
