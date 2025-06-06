@@ -3,6 +3,8 @@ import sys
 import re
 from types import SimpleNamespace
 
+import re
+
 def argumentsTree(argv: list):
     arguments_struct = {}
 
@@ -10,20 +12,22 @@ def argumentsTree(argv: list):
     splited_unparsed_arguments = re.split(r" -{1,2}", unparsed_arguments)
 
     for _argv in splited_unparsed_arguments:
+        content_argument = _argv.strip().split(" ")
+        
+        if not content_argument or content_argument[0] == "":
+            continue
 
-        content_argument = _argv.split(" ")
-        arguemnt_name = content_argument[0]
+        # Transformar --argumento-to en argumento_to
+        argument_name = content_argument[0].replace("-", "_")
 
         if len(content_argument) == 1:
             value = None
-
-        if len(content_argument) == 2:
+        elif len(content_argument) == 2:
             value = content_argument[1]
-
-        if len(content_argument) > 2:
+        else:
             value = content_argument[1:]
 
-        arguments_struct[arguemnt_name] = value
+        arguments_struct[argument_name] = value
 
     return arguments_struct
 
@@ -38,14 +42,17 @@ class ParserArguments:
 
     def add(self, *arg, text_help=None, length=1):
         arguments_allowed_forms = sorted(
-            [a.strip("-") for a in arg], reverse=True)
+            [a.lstrip('-').replace('-', '_') for a in arg],
+            reverse=True
+        )
 
-        self.arguments_added[arguments_allowed_forms[0]] = {
+        canonical_name = arguments_allowed_forms[0]
+
+        self.arguments_added[canonical_name] = {
             "arguments": arguments_allowed_forms,
             "text_help": text_help,
             "length": length,
         }
-
     def get(self):
         arguments_allowed = [arg for data in self.arguments_added.values() for arg in data["arguments"]]
         ns = SimpleNamespace()

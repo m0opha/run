@@ -4,3 +4,4 @@
 /.env/
 run.bin
 test.py
+/test/
