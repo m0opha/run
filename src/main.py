@@ -10,9 +10,8 @@ from .modules import (verifyConfigDir,
 
 verifyConfigDir()
 
-from .vars.config import _TARGET_FILENAME, _EXECUTE_ALL_FLAG
+from .vars.config import _TARGET_FILENAME, _EXECUTE_ALL_FLAG, _CONFIG
 from .vars.paths import _CURRENT_DIR
-from .vars.get_data import _CONFIG
 
 def multiple_target_files(targets_filename):
     length_files_found = len(targets_filename)
