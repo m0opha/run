@@ -17,17 +17,12 @@ Una herramienta flexible para ejecutar scripts automáticamente según su extens
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/usuario/run-executor.git
-cd run-executor
+git clone https://github.com/usuario/run.git
+cd run
+./run.sh
 ```
 
-2. Asegúrate de tener Python 3 instalado y las dependencias:
-
-```bash
-pip install colorama
-```
-
-3. La primera vez que ejecutes el script, se creará automáticamente un archivo de configuración en:
+2. La primera vez que ejecutes el script, se creará automáticamente un archivo de configuración en:
 
 - Linux/macOS: `~/.config/run/config.txt`
 - Windows: `%APPDATA%/run/config.txt`
@@ -63,17 +58,17 @@ ruby = rb
 
 ### 🧪 Ejemplos
 
-#### Ejecutar `run.py` en el directorio actual:
+#### Ejecutar `run.*` en el directorio actual:
 ```bash
 ./run
 ```
 
-#### Ejecutar archivo llamado `deploy.py`:
+#### Ejecutar archivo llamado `deploy.*`:
 ```bash
 ./run --target deploy
 ```
 
-#### Buscar archivos `setup.sh` en una ruta específica:
+#### Buscar archivos `setup.*` en una ruta específica:
 ```bash
 ./run --target setup --path ~/proyectos/scripts
 ```
@@ -101,23 +96,6 @@ src/
 - Python 3.x
 - [colorama](https://pypi.org/project/colorama/)
 
-Instalación:
-
-```bash
-pip install colorama
-```
-
----
-
-## ✅ TODOs futuros
-
-- Soporte para ejecución encadenada.
-- Soporte para extensiones personalizadas.
-- Validación de binarios faltantes.
-- Logging en archivos.
-
----
-
 ## 🧑‍💻 Autor
 
-Desarrollado por [TuNombre](https://github.com/tuusuario)
+Desarrollado por [m0opha](https://github.com/m0opha)
