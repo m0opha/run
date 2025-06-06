@@ -95,7 +95,3 @@ src/
 
 - Python 3.x
 - [colorama](https://pypi.org/project/colorama/)
-
-## 🧑‍💻 Autor
-
-Desarrollado por [m0opha](https://github.com/m0opha)
