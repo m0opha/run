@@ -10,6 +10,6 @@ if os.name == "posix":
     _CONFIG_PATH = os.path.join(os.getenv(HOME), CONFIG, _APP_NAME)
 
 if os.name == "nt":
-    _CONFIG_PATH = os.path.join(os.getenv('APPDATA'), CONFIG, _APP_NAME)
+    _CONFIG_PATH = os.path.join(os.getenv('APPDATA'), _APP_NAME)
     
 _CONFIG_FILE_PATH = os.path.join(_CONFIG_PATH, "config.txt")
