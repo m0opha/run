@@ -11,10 +11,11 @@ from .modules import (verifyConfigDir,
                      ParserArguments, 
                      printUsage)
 
+verifyConfigDir()
+
 from .vars.config import _TARGET_FILENAME
 from .vars.paths import _CURRENT_DIR, _CONFIG_FILE_PATH
 
-verifyConfigDir()
 
 _CONFIG = getConfig(_CONFIG_FILE_PATH)
 if _CONFIG == None:
@@ -51,17 +52,17 @@ def multiple_target_files(targets_filename):
     sys.exit(0)
     
 def run():
-    targets_filename = searchTargetFile(_TARGET_FILENAME, resolvePath(_CURRENT_DIR))
+    targets_files = searchTargetFile(_TARGET_FILENAME, resolvePath(_CURRENT_DIR))
     
-    if not targets_filename:
+    if not targets_files:
         pError(f"[-] Target file {_TARGET_FILENAME} Not found.")        
         return
 
-    if type(targets_filename) == list :
-        multiple_target_files(targets_filename)
+    if type(targets_files) == list :
+        multiple_target_files(targets_files)
     
     #if only one target file execute it.
-    executeByExtension(targets_filename, _CONFIG)
+    executeByExtension(targets_files, _CONFIG)
     
 def main():
     parser_arguments = ParserArguments()    

@@ -4,13 +4,13 @@ pip install colorama nuitka
 python3 -m nuitka \
   --standalone \
   --onefile \
+   --output-dir=dist \
   --remove-output \
   --follow-imports \
   --lto=yes \
   --clang \
-  --jobs=3 \
+  --jobs=6 \
   --assume-yes-for-downloads \
   run.py
 
-cp run.bin ~/bin/run
 deactivate
