@@ -8,7 +8,7 @@ from .modules import (verifyConfigDir,
                      ParserArguments, 
                      printUsage)
 
-verifyConfigDir()
+
 
 from .vars.config import _TARGET_FILENAME, _EXECUTE_ALL_FLAG, _CONFIG
 from .vars.paths import _CURRENT_DIR
@@ -59,6 +59,7 @@ def run():
     executeByExtension(targets_files, _CONFIG)
     
 def main():
+    verifyConfigDir()
     parser_arguments = ParserArguments()    
     parser_arguments.add("--help", "-h")
     parser_arguments.add("--target" , "-T", length=2)
