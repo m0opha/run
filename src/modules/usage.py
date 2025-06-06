@@ -1,16 +1,18 @@
 def printUsage():
-    usage = """
+    usage = f"""
 Usage:
-  ./run [--help] [--target <keyword>] [--path <path>] 
+  ./run [--help] [--target <keyword>] [--path <path>] [--execute-all]
 
 Options:
-  --help, -h                  Displays this help message and exits.
-  --target, -T <keyword>      (optional) Specifies the target keyword.
-  --path, -p <path>           Specifies the path to scan a run it!.
-  --execute-all, -EA          Execute all script with the target keyword
+  --help, -h                 Show this help message and exit.
+  --target, -T <keyword>     (Optional) Specify the target filename (without extension) to execute.
+  --path, -p <path>          Specify the directory path to search for the script.
+  --execute-all, -EA         Execute all scripts that match the target keyword.
 
 Examples:
   ./run --target run
-  ./run -h"""
+  ./run -h
+  ./run --target myscript --path ~/projects
+  ./run --target test --execute-all
+"""
     print(usage)
-    return
