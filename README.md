@@ -8,7 +8,7 @@ Este proyecto es un ejecutor automático de archivos fuente basado en su extensi
 
 - Soporte multiplataforma (Linux / Windows).
 - Ejecuta archivos como `.py`, `.sh`, `.rb`, `.c`, etc., según su extensión.
-- Gestión automática de configuración desde `~/.config/run/config.txt` o `%APPDATA%/.config/run/config.txt`.
+- Gestión automática de configuración desde `~/.config/run/config.txt` o `%APPDATA%/run/config.txt`.
 - Detección de múltiples archivos `run.*` y permite elegir cuál ejecutar.
 - Colores en la terminal (mediante `colorama`).
 - Analizador simple de argumentos (`--help`, `--target`).
